@@ -69,39 +69,63 @@
       }
     }
 
-    /* Sakura */
+    /* 🌸 Sakura Flower */
     .sakura {
       position: fixed;
       top: -10px;
-      width: 12px;
-      height: 12px;
-      background: pink;
-      border-radius: 50%;
-      opacity: 0.8;
+      width: 16px;
+      height: 16px;
+
+      background: radial-gradient(circle at 30% 30%, #ffd1dc, #ff8fab);
+      opacity: 0.9;
+
+      /* Bentuk kelopak sakura */
+      clip-path: polygon(
+        50% 0%,
+        65% 20%,
+        100% 25%,
+        75% 50%,
+        100% 75%,
+        65% 80%,
+        50% 100%,
+        35% 80%,
+        0% 75%,
+        25% 50%,
+        0% 25%,
+        35% 20%
+      );
+
       animation: fall linear infinite;
+      z-index: 1;
     }
 
     @keyframes fall {
       0% {
-        transform: translateY(-10px) translateX(0);
+        transform: translateY(-10px) translateX(0) rotate(0deg);
       }
       100% {
-        transform: translateY(100vh) translateX(100px);
+        transform: translateY(100vh) translateX(80px) rotate(360deg);
       }
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- Sakura Generator -->
+  <!-- 🌸 Sakura Generator -->
   <script>
     for (let i = 0; i < 30; i++) {
       let sakura = document.createElement("div");
       sakura.classList.add("sakura");
+
       sakura.style.left = Math.random() * 100 + "vw";
       sakura.style.animationDuration = (5 + Math.random() * 5) + "s";
       sakura.style.opacity = Math.random();
+
+      // ukuran random biar natural
+      sakura.style.transform = `scale(${Math.random() * 0.8 + 0.5})`;
+
       document.body.appendChild(sakura);
     }
   </script>
