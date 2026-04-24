@@ -11,16 +11,23 @@
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #0f172a, #1e293b);
       color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      overflow: hidden;
     }
 
     .container {
       text-align: center;
+      position: relative;
+      z-index: 2;
+      top: 50%;
+      transform: translateY(-50%);
       width: 90%;
       max-width: 400px;
+      margin: auto;
+    }
+
+    .logo {
+      width: 100px;
+      margin-bottom: 15px;
     }
 
     h1 {
@@ -43,11 +50,51 @@
       background: #475569;
       transform: scale(1.05);
     }
+
+    /* Sakura animation */
+    .sakura {
+      position: fixed;
+      top: -10px;
+      color: pink;
+      font-size: 20px;
+      animation: fall linear infinite;
+      z-index: 1;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10px) translateX(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) translateX(50px) rotate(360deg);
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Sakura petals -->
+  <script>
+    for (let i = 0; i < 25; i++) {
+      let sakura = document.createElement("div");
+      sakura.innerHTML = "🌸";
+      sakura.classList.add("sakura");
+
+      sakura.style.left = Math.random() * 100 + "vw";
+      sakura.style.animationDuration = (5 + Math.random() * 5) + "s";
+      sakura.style.fontSize = (12 + Math.random() * 20) + "px";
+
+      document.body.appendChild(sakura);
+    }
+  </script>
+
   <div class="container">
+
+    <!-- Logo Sakura -->
+    <img src="https://cdn-icons-png.flaticon.com/512/616/616494.png" class="logo">
+
     <h1>Limrychun</h1>
 
     <a class="link-btn" href="https://my-site-3zhj99ot-royyuki21.wix-vibe-site.com/home" target="_blank">
@@ -63,5 +110,6 @@
     </a>
 
   </div>
+
 </body>
 </html>
