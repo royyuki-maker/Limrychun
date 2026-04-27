@@ -8,8 +8,10 @@
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
+  font-family: 'Segoe UI', sans-serif;
+
+  /* 🌌 Background futuristik */
+  background: radial-gradient(circle at 20% 20%, #1e293b, #020617 80%);
   color: white;
   overflow: hidden;
 
@@ -19,27 +21,99 @@ body {
   height: 100vh;
 }
 
+/* 🔲 Grid cyber */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,255,0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* ✨ Glow animasi */
+body::after {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,255,255,0.08), transparent 70%);
+  animation: moveGlow 15s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moveGlow {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-25%, -25%); }
+  100% { transform: translate(0,0); }
+}
+
 .container {
   text-align: center;
   width: 90%;
   max-width: 400px;
-  padding-top: 80px;
+  padding: 30px;
+  margin-top: 80px;
   z-index: 2;
+
+  /* 🧊 Glass effect */
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,255,255,0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,255,255,0.2);
+}
+
+h1 {
+  font-size: 32px;
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
 }
 
 h2 {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .link-btn {
   display: block;
-  background: #334155;
   padding: 15px;
-  margin: 10px 0;
+  margin: 12px 0;
   border-radius: 12px;
   color: white;
   text-decoration: none;
   font-weight: bold;
+
+  /* 🔮 Neon button */
+  background: rgba(51,65,85,0.4);
+  border: 1px solid rgba(0,255,255,0.3);
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.link-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+}
+
+/* ✨ Shine effect */
+.link-btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0,255,255,0.3), transparent);
+  top: 0;
+  left: -100%;
+  transition: 0.5s;
+}
+
+.link-btn:hover::before {
+  left: 100%;
 }
 
 /* 🌸 Sakura */
@@ -50,11 +124,10 @@ h2 {
   height: 28px;
   pointer-events: none;
 
-  /* scale pakai variable biar tidak bentrok */
   --scale: 1;
 
   animation: fall linear infinite;
-  filter: drop-shadow(0 0 4px rgba(255, 182, 193, 0.6));
+  filter: drop-shadow(0 0 6px rgba(255, 100, 200, 0.8));
 }
 
 svg {
@@ -62,64 +135,9 @@ svg {
   height: 100%;
 }
 
-/* ✅ Animasi sudah digabung dengan scale */
+/* 🌸 Animasi jatuh */
 @keyframes fall {
   0% {
     transform: translateY(-10px) translateX(0) rotate(0deg) scale(var(--scale));
   }
-  50% {
-    transform: translateY(50vh) translateX(40px) rotate(180deg) scale(var(--scale));
-  }
-  100% {
-    transform: translateY(100vh) translateX(-40px) rotate(360deg) scale(var(--scale));
-  }
-}
-</style>
-</head>
-
-<body>
-
-<script>
-for (let i = 0; i < 25; i++) {
-  let sakura = document.createElement("div");
-  sakura.classList.add("sakura");
-
-  sakura.style.left = Math.random() * 100 + "vw";
-  sakura.style.animationDuration = (6 + Math.random() * 5) + "s";
-  sakura.style.opacity = Math.random() * 0.7 + 0.3;
-
-  // ✅ pakai variable, bukan transform langsung
-  sakura.style.setProperty('--scale', Math.random() * 0.5 + 0.8);
-
-  sakura.innerHTML = `
-  <svg viewBox="0 0 100 100">
-    <path fill="#ff9bb3" d="
-      M50 15
-      C60 0, 80 0, 75 25
-      C100 20, 100 40, 80 50
-      C100 60, 100 80, 75 75
-      C80 100, 60 100, 50 85
-      C40 100, 20 100, 25 75
-      C0 80, 0 60, 20 50
-      C0 40, 0 20, 25 25
-      C20 0, 40 0, 50 15
-      Z"/>
-    <circle cx="50" cy="50" r="10" fill="#ffd166"/>
-  </svg>
-  `;
-
-  document.body.appendChild(sakura);
-}
-</script>
-
-<div class="container">
-  <h2>Welcome to</h2>
-  <h1>Limrychun</h1>
-
-  <a class="link-btn" href="https://my-site-3zhj99ot-royyuki21.wix-vibe-site.com/home">🌐 Website</a>
-  <a class="link-btn" href="https://www.threads.com/@lim_rychun">🧵 Threads</a>
-  <a class="link-btn" href="https://www.linkedin.com">💼 LinkedIn</a>
-</div>
-
-</body>
-</html>
+  50
